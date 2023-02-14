@@ -49,14 +49,14 @@ pipeline {
         stage('Build App Staging Docker Images') {
             steps {
                 echo 'Building App Staging Images'
-                //sh ". ./jenkins/build-staging-docker-images-for-ecr.sh"
+                sh ". ./jenkins/build-staging-docker-images-for-ecr.sh"
                 sh 'docker image ls'
             }
         }
         stage('Push Images to ECR Repo') {
             steps {
                 echo "Pushing ${APP_NAME} App Images to ECR Repo"
-                //sh ". ./jenkins/push-staging-docker-images-to-ecr.sh"
+                sh ". ./jenkins/push-staging-docker-images-to-ecr.sh"
             }
         }
         stage('Deploy App on Petclinic Kubernetes Cluster'){
